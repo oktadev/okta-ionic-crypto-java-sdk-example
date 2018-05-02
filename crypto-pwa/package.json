@@ -85,7 +85,6 @@
       "lcov",
       "text"
     ],
-    "coverageDirectory": "./public/coverage",
-    "collectCoverage": true
+    "coverageDirectory": "./public/coverage"
   }
 }
