@@ -9,18 +9,16 @@ describe('App', () => {
   });
 
   describe('default screen', () => {
-    beforeEach(() => {
-      page.navigateTo('/#/home');
+    beforeEach(async () => {
+      await page.navigateTo('/#/home');
     });
 
-    it('should redirect to login', () => {
-      browser.wait(ec.urlContains('/#/login'), 5000);
+    it('should redirect to login', async () => {
+      await browser.wait(ec.urlContains('/#/login'));
     });
 
-    it('should have the correct title', () => {
-      page.getTitle().then(title => {
-        expect(title).toEqual('Cryptocurrency PWA with Authentication');
-      });
+    it('should have the correct title', async () => {
+      await expect(page.getTitle()).toEqual('Cryptocurrency PWA with Authentication');
     });
   });
 });
