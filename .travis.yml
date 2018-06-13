@@ -30,7 +30,7 @@ script:
 - cd holdings-api && ./mvnw -q clean verify
 - cd ../crypto-pwa && npm i && npm test
 - cd ../holdings-api && ./mvnw -q spring-boot:run &
-- cd ../crypto-pwa && npm run build --prod
+- cd ../crypto-pwa && ionic serve
 - npm run e2e
 notifications:
   webhooks:
