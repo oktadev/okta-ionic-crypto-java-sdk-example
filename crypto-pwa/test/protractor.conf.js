@@ -3,7 +3,7 @@ const serve = require('serve');
 let server;
 
 exports.config = {
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 20000,
   specs: [
     '../e2e/**/*.e2e-spec.ts'
   ],
