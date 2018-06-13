@@ -29,7 +29,7 @@ script:
 - chmod +x holdings-api/mvnw
 - cd holdings-api && ./mvnw -q clean verify
 - cd ../crypto-pwa && npm i && npm test
-- cd ../holdings-api/mvnw -q spring-boot:run &
+- cd ../holdings-api && ./mvnw -q spring-boot:run &
 - cd ../crypto-pwa && npm run build --prod
 - npm run e2e
 notifications:
