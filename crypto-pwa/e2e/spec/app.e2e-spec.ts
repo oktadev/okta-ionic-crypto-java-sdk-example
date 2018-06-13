@@ -14,7 +14,7 @@ describe('App', () => {
     });
 
     it('should redirect to login', () => {
-      browser.wait(ec.urlContains('/#/login'), 15000);
+      browser.wait(ec.urlContains('/#/login'), 5000);
     });
 
     it('should have the correct title', () => {
