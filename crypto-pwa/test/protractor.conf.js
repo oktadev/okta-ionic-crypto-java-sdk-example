@@ -3,7 +3,7 @@ const serve = require('serve');
 let server;
 
 exports.config = {
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: s000,
   specs: [
     '../e2e/**/*.e2e-spec.ts'
   ],
@@ -15,7 +15,7 @@ exports.config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 60000,
+    defaultTimeoutInterval: 30000,
     print: function() {}
   },
   onPrepare() {
