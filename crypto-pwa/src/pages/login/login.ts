@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, App } from 'ionic-angular';
-import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { App, IonicPage } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage({
   name: 'LoginPage'
@@ -11,20 +11,15 @@ import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 })
 export class LoginPage {
 
-  constructor(private oauthService: OAuthService, private app: App) {
-    if (this.oauthService.hasValidIdToken()) {
-      this.app.getRootNavs()[0].setRoot('HomePage');
-    }
-
-    oauthService.redirectUri = window.location.origin;
-    oauthService.clientId = '0oadm6f31vyNMn6gf0h7';
-    oauthService.scope = 'openid profile email';
-    oauthService.issuer = 'https://dev-158606.oktapreview.com/oauth2/default';
-    oauthService.tokenValidationHandler = new JwksValidationHandler();
-    oauthService.loadDiscoveryDocumentAndTryLogin();
+  constructor(private userProvider: UserProvider, private app: App) {
+    userProvider.getUser().subscribe((user) => {
+      if (user !== null) {
+        this.app.getRootNavs()[0].setRoot('HomePage');
+      }
+    });
   }
 
   login() {
-    this.oauthService.initImplicitFlow();
+    this.userProvider.login();
   }
 }

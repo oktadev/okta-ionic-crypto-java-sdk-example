@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -7,11 +7,11 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class MyApp {
   rootPage: any = 'HomePage';
 
-  constructor(oauthService: OAuthService) {
-    if (oauthService.hasValidIdToken()) {
-      this.rootPage = 'HomePage';
-    } else {
-      this.rootPage = 'LoginPage';
-    }
+  constructor(userProvider: UserProvider) {
+    userProvider.getUser().subscribe((user) => {
+      if (user == null) {
+        this.rootPage = 'LoginPage';
+      }
+    });
   }
 }
