@@ -23,6 +23,10 @@ self.toolbox.precache(
   ]
 );
 
+// attempt to use network for /login and /api calls
+self.toolbox.router.any('/login', self.toolbox.networkFirst);
+self.toolbox.router.any('/api/*', self.toolbox.networkFirst);
+
 // dynamically cache any other local assets
 self.toolbox.router.any('/*', self.toolbox.fastest);
 
