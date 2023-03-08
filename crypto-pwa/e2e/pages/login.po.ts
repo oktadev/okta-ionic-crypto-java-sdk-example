@@ -37,16 +37,13 @@ export class LoginPage extends Page {
     this.password.clear();
   }
 
-  login(username: string, password: string) {
+  async login(username: string, password: string) {
     // Entering non angular site, tell webdriver to switch to synchronous mode.
     browser.waitForAngularEnabled(false);
-    this.username.isPresent().then(() => {
-      this.username.sendKeys(username);
-      this.password.sendKeys(password);
-      this.oktaLoginButton.click();
-    }).catch(error => {
-      browser.waitForAngularEnabled(true);
-    });
+    await this.username.isPresent();
+    await this.username.sendKeys(username);
+    await this.password.sendKeys(password);
+    await this.oktaLoginButton.click();
   }
 
   clickLoginButton() {
